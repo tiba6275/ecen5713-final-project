@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tiba6275/Documents/opencv
+CMAKE_SOURCE_DIR = /home/tiba6275/Documents/ecen5713-final-project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tiba6275/Documents/opencv
+CMAKE_BINARY_DIR = /home/tiba6275/Documents/ecen5713-final-project
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiba6275/Documents/opencv/CMakeFiles /home/tiba6275/Documents/opencv/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiba6275/Documents/ecen5713-final-project/CMakeFiles /home/tiba6275/Documents/ecen5713-final-project/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiba6275/Documents/opencv/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tiba6275/Documents/ecen5713-final-project/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DisplayImage
+# Target rules for targets named DetectChange
 
 # Build rule for target.
-DisplayImage: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DisplayImage
-.PHONY : DisplayImage
+DetectChange: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DetectChange
+.PHONY : DetectChange
 
 # fast build rule for target.
-DisplayImage/fast:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/build
-.PHONY : DisplayImage/fast
+DetectChange/fast:
+	$(MAKE) -f CMakeFiles/DetectChange.dir/build.make CMakeFiles/DetectChange.dir/build
+.PHONY : DetectChange/fast
 
-DisplayImage.o: DisplayImage.cpp.o
+DetectChange.o: DetectChange.cpp.o
 
-.PHONY : DisplayImage.o
+.PHONY : DetectChange.o
 
 # target to build an object file
-DisplayImage.cpp.o:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.o
-.PHONY : DisplayImage.cpp.o
+DetectChange.cpp.o:
+	$(MAKE) -f CMakeFiles/DetectChange.dir/build.make CMakeFiles/DetectChange.dir/DetectChange.cpp.o
+.PHONY : DetectChange.cpp.o
 
-DisplayImage.i: DisplayImage.cpp.i
+DetectChange.i: DetectChange.cpp.i
 
-.PHONY : DisplayImage.i
+.PHONY : DetectChange.i
 
 # target to preprocess a source file
-DisplayImage.cpp.i:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.i
-.PHONY : DisplayImage.cpp.i
+DetectChange.cpp.i:
+	$(MAKE) -f CMakeFiles/DetectChange.dir/build.make CMakeFiles/DetectChange.dir/DetectChange.cpp.i
+.PHONY : DetectChange.cpp.i
 
-DisplayImage.s: DisplayImage.cpp.s
+DetectChange.s: DetectChange.cpp.s
 
-.PHONY : DisplayImage.s
+.PHONY : DetectChange.s
 
 # target to generate assembly for a file
-DisplayImage.cpp.s:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.s
-.PHONY : DisplayImage.cpp.s
+DetectChange.cpp.s:
+	$(MAKE) -f CMakeFiles/DetectChange.dir/build.make CMakeFiles/DetectChange.dir/DetectChange.cpp.s
+.PHONY : DetectChange.cpp.s
 
 # Help Target
 help:
@@ -158,10 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... DisplayImage"
-	@echo "... DisplayImage.o"
-	@echo "... DisplayImage.i"
-	@echo "... DisplayImage.s"
+	@echo "... DetectChange"
+	@echo "... DetectChange.o"
+	@echo "... DetectChange.i"
+	@echo "... DetectChange.s"
 .PHONY : help
 
 
