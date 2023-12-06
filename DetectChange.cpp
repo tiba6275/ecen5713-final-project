@@ -1,36 +1,56 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <stdio.h>
+#include <iostream>
+#include <unistd.h>
+#include <thread>
+#include <string>
 
-int main(int argc, char** argv) {
-    if (argc != 4) {
-        printf("Usage: ./DetectChange <image1> <image2> <output_image>\n");
-        return -1;
-    }
+void captureImage(const char* filename) {
+    std::string command = "libcamera-still -o " + std::string(filename);
+    system(command.c_str());
+}
 
-    //Image input
-    cv::Mat image1 = cv::imread(argv[1], cv::IMREAD_COLOR);
-    cv::Mat image2 = cv::imread(argv[2], cv::IMREAD_COLOR);
+void compareImages(const char* in1, const char* in2, const std::string& out) {
+    cv::Mat image1 = cv::imread(in1, cv::IMREAD_COLOR);
+    cv::Mat image2 = cv::imread(in2, cv::IMREAD_COLOR);
 
-    //Check input data
     if (!image1.data || !image2.data) {
-        printf("Error: Could not open or find the images\n");
-        return -1;
+        std::cerr << "Error: Could not open or find the images\n";
+        return;
     }
 
-    //Check size
     if (image1.size() != image2.size()) {
-        printf("Error: Images must be of the same size\n");
-        return -1;
+        std::cerr << "Error: Images must be of the same size\n";
+        return;
     }
 
-    //Matrix to hold result
     cv::Mat diffImage;
-
-    //Calculating difference
     cv::absdiff(image1, image2, diffImage);
+    cv::imwrite(out, diffImage);
+}
 
-    cv::imwrite(argv[3], diffImage);
+int main() {
+    const char* inFile1 = "input1.jpg";
+    const char* inFile2 = "input2.jpg";
+    int outIdx = 0;
+
+    captureImage(inFile1);
+
+    while (true) {
+        sleep(5);
+
+        captureImage(inFile2);
+
+        std::string outFile = "out" + std::to_string(outIdx) + ".jpg";
+
+        std::thread comparisonThread(compareImages, inFile1, inFile2, outFile);
+        comparisonThread.join();
+
+        outIdx++;
+
+        std::swap(inFile1, inFile2);
+    }
 
     return 0;
 }
+
