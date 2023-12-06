@@ -31,7 +31,6 @@ int main(int argc, char** argv) {
     cv::absdiff(image1, image2, diffImage);
 
     cv::imwrite(argv[3], diffImage);
-    cv::waitKey(0);
 
     return 0;
 }
