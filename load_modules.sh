@@ -2,85 +2,156 @@
 
 case "$1" in
     start)
-        echo "load modules"
-        modprobe rfcomm
-        modprobe cmac
-        modprobe algif_hash
-        modprobe aes_arm_bs
-        modprobe crypto_simd
-        modprobe cryptd
-        modprobe algif_skcipher
-        modprobe af_alg
-        modprobe bnep
-        modprobe hci_uart
-        modprobe btbcm
-        modprobe bluetooth
-        modprobe ecdh_generic
-        modprobe ecc
-        modprobe imx219
-        modprobe 8021q
-        modprobe garp
-        modprobe stp
-        modprobe llc
-        modprobe joydev
-        modprobe vc4
-        modprobe brcmfmac
-        modprobe snd_soc_hdmi_codec
-        modprobe drm_display_handler
-        modprobe cec
-        modprobe drm_dma_helper
-        modprobe brcmutil
-        modprobe drm_kms_helper
-        modprobe snd_soc_core
-        modprobe sha256_generic
-        modprobe cfg80211
-        modprobe raspberrypi_hwmon
-        modprobe i2c_mux_pinctrl
-        modprobe snd_compress
-        modprobe bcm2835_unicam
-        modprobe i2c_mux
-        modprobe snd_pcm_dmaengine
-        modprobe syscopyarea
-        modprobe sysfillrect
-        modprobe sysimgblt
-        modprobe fb_sys_fops
-        modprobe v4l2_dv_timings
-        modprobe rfkill
-        modprobe v4l2_fwnode
-        modprobe v4l2_async
-        modprobe bcm2835_codec
-        modprobe bcm2835_v4l2
-        modprobe snd_bcm2835
-        modprobe v4l2_mem2mem
-        modprobe snd_pcm
-        modprobe bcm2835_isp
-        modprobe snd_timer
-        modprobe videobuf2_vmalloc
-        modprobe bcm2835_mmal_vchiq
-        modprobe videobuf2_dma_contig
-        modprobe videobuf2_memops
-        modprobe i2c_bcm2835
-        modprobe videobuf2_v4l2
-        modprobe snd
-        modprobe videobuf2_common
-        modprobe vc_sm_cma
-        modprobe videodev
-        modprobe mc
-        modprobe fixed
-        modprobe uio_pdrv_genirq
-        modprobe uio
-        modprobe drm
-        modprobe i2c_dev
-        modprobe fuse
-        modprobe drm_panel_orientation_quirks
-        modprobe backlight
-        modprobe ip_tables
-        modprobe x_tables
-        modprobe ipv6
+        echo "modprobe rfcomm" && modprobe rfcomm
+        echo "modprobe cmac" && modprobe cmac
+        echo "modprobe algif_hash" && modprobe algif_hash
+        echo "modprobe aes_arm_bs" && modprobe aes_arm_bs
+        echo "modprobe crypto_simd" && modprobe crypto_simd
+        echo "modprobe cryptd" && modprobe cryptd
+        echo "modprobe algif_skcipher" && modprobe algif_skcipher
+        echo "modprobe af_alg" && modprobe af_alg
+        echo "modprobe bnep" && modprobe bnep
+        echo "modprobe hci_uart" && modprobe hci_uart
+        echo "modprobe btbcm" && modprobe btbcm
+        echo "modprobe bluetooth" && modprobe bluetooth
+        echo "modprobe ecdh_generic" && modprobe ecdh_generic
+        echo "modprobe ecc" && modprobe ecc
+        echo "modprobe imx219" && modprobe imx219
+        echo "modprobe 8021q" && modprobe 8021q
+        echo "modprobe garp" && modprobe garp
+        echo "modprobe stp" && modprobe stp
+        echo "modprobe llc" && modprobe llc
+        echo "modprobe joydev" && modprobe joydev
+        echo "modprobe vc4" && modprobe vc4
+        echo "modprobe brcmfmac" && modprobe brcmfmac
+        echo "modprobe snd_soc_hdmi_codec" && modprobe snd_soc_hdmi_codec
+        echo "modprobe drm_display_handler" && modprobe drm_display_handler
+        echo "modprobe cec" && modprobe cec
+        echo "modprobe drm_dma_helper" && modprobe drm_dma_helper
+        echo "modprobe brcmutil" && modprobe brcmutil
+        echo "modprobe drm_kms_helper" && modprobe drm_kms_helper
+        echo "modprobe snd_soc_core" && modprobe snd_soc_core
+        echo "modprobe sha256_generic" && modprobe sha256_generic
+        echo "modprobe cfg80211" && modprobe cfg80211
+        echo "modprobe raspberrypi_hwmon" && modprobe raspberrypi_hwmon
+        echo "modprobe i2c_mux_pinctrl" && modprobe i2c_mux_pinctrl
+        echo "modprobe snd_compress" && modprobe snd_compress
+        echo "modprobe bcm2835_unicam" && modprobe bcm2835_unicam
+        echo "modprobe i2c_mux" && modprobe i2c_mux
+        echo "modprobe snd_pcm_dmaengine" && modprobe snd_pcm_dmaengine
+        echo "modprobe syscopyarea" && modprobe syscopyarea
+        echo "modprobe sysfillrect" && modprobe sysfillrect
+        echo "modprobe sysimgblt" && modprobe sysimgblt
+        echo "modprobe fb_sys_fops" && modprobe fb_sys_fops
+        echo "modprobe v4l2_dv_timings" && modprobe v4l2_dv_timings
+        echo "modprobe rfkill" && modprobe rfkill
+        echo "modprobe v4l2_fwnode" && modprobe v4l2_fwnode
+        echo "modprobe v4l2_async" && modprobe v4l2_async
+        echo "modprobe bcm2835_codec" && modprobe bcm2835_codec
+        echo "modprobe bcm2835_v4l2" && modprobe bcm2835_v4l2
+        echo "modprobe snd_bcm2835" && modprobe snd_bcm2835
+        echo "modprobe v4l2_mem2mem" && modprobe v4l2_mem2mem
+        echo "modprobe snd_pcm" && modprobe snd_pcm
+        echo "modprobe bcm2835_isp" && modprobe bcm2835_isp
+        echo "modprobe snd_timer" && modprobe snd_timer
+        echo "modprobe videobuf2_vmalloc" && modprobe videobuf2_vmalloc
+        echo "modprobe bcm2835_mmal_vchiq" && modprobe bcm2835_mmal_vchiq
+        echo "modprobe videobuf2_dma_contig" && modprobe videobuf2_dma_contig
+        echo "modprobe videobuf2_memops" && modprobe videobuf2_memops
+        echo "modprobe i2c_bcm2835" && modprobe i2c_bcm2835
+        echo "modprobe videobuf2_v4l2" && modprobe videobuf2_v4l2
+        echo "modprobe snd" && modprobe snd
+        echo "modprobe videobuf2_common" && modprobe videobuf2_common
+        echo "modprobe vc_sm_cma" && modprobe vc_sm_cma
+        echo "modprobe videodev" && modprobe videodev
+        echo "modprobe mc" && modprobe mc
+        echo "modprobe fixed" && modprobe fixed
+        echo "modprobe uio_pdrv_genirq" && modprobe uio_pdrv_genirq
+        echo "modprobe uio" && modprobe uio
+        echo "modprobe drm" && modprobe drm
+        echo "modprobe i2c_dev" && modprobe i2c_dev
+        echo "modprobe fuse" && modprobe fuse
+        echo "modprobe drm_panel_orientation_quirks" && modprobe drm_panel_orientation_quirks
+        echo "modprobe backlight" && modprobe backlight
+        echo "modprobe ip_tables" && modprobe ip_tables
+        echo "modprobe x_tables" && modprobe x_tables
+        echo "modprobe ipv6" && modprobe ipv6
         ;;
     stop)
-        echo "Stopping"
-
+        echo "rmmod ipv6" && rmmod ipv6
+        echo "rmmod x_tables" && rmmod x_tables
+        echo "rmmod ip_tables" && rmmod ip_tables
+        echo "rmmod backlight" && rmmod backlight
+        echo "rmmod drm_panel_orientation_quirks" && rmmod drm_panel_orientation_quirks
+        echo "rmmod fuse" && rmmod fuse
+        echo "rmmod i2c_dev" && rmmod i2c_dev
+        echo "rmmod drm" && rmmod drm
+        echo "rmmod uio" && rmmod uio
+        echo "rmmod uio_pdrv_genirq" && rmmod uio_pdrv_genirq
+        echo "rmmod fixed" && rmmod fixed
+        echo "rmmod mc" && rmmod mc
+        echo "rmmod videodev" && rmmod videodev
+        echo "rmmod vc_sm_cma" && rmmod vc_sm_cma
+        echo "rmmod videobuf2_common" && rmmod videobuf2_common
+        echo "rmmod snd" && rmmod snd
+        echo "rmmod videobuf2_v4l2" && rmmod videobuf2_v4l2
+        echo "rmmod i2c_bcm2835" && rmmod i2c_bcm2835
+        echo "rmmod videobuf2_memops" && rmmod videobuf2_memops
+        echo "rmmod videobuf2_dma_contig" && rmmod videobuf2_dma_contig
+        echo "rmmod bcm2835_mmal_vchiq" && rmmod bcm2835_mmal_vchiq
+        echo "rmmod videobuf2_vmalloc" && rmmod videobuf2_vmalloc
+        echo "rmmod snd_timer" && rmmod snd_timer
+        echo "rmmod bcm2835_isp" && rmmod bcm2835_isp
+        echo "rmmod snd_pcm" && rmmod snd_pcm
+        echo "rmmod v4l2_mem2mem" && rmmod v4l2_mem2mem
+        echo "rmmod snd_bcm2835" && rmmod snd_bcm2835
+        echo "rmmod bcm2835_v4l2" && rmmod bcm2835_v4l2
+        echo "rmmod bcm2835_codec" && rmmod bcm2835_codec
+        echo "rmmod v4l2_async" && rmmod v4l2_async
+        echo "rmmod v4l2_fwnode" && rmmod v4l2_fwnode
+        echo "rmmod rfkill" && rmmod rfkill
+        echo "rmmod v4l2_dv_timings" && rmmod v4l2_dv_timings
+        echo "rmmod fb_sys_fops" && rmmod fb_sys_fops
+        echo "rmmod sysimgblt" && rmmod sysimgblt
+        echo "rmmod sysfillrect" && rmmod sysfillrect
+        echo "rmmod syscopyarea" && rmmod syscopyarea
+        echo "rmmod snd_pcm_dmaengine" && rmmod snd_pcm_dmaengine
+        echo "rmmod i2c_mux" && rmmod i2c_mux
+        echo "rmmod bcm2835_unicam" && rmmod bcm2835_unicam
+        echo "rmmod snd_compress" && rmmod snd_compress
+        echo "rmmod i2c_mux_pinctrl" && rmmod i2c_mux_pinctrl
+        echo "rmmod raspberrypi_hwmon" && rmmod raspberrypi_hwmon
+        echo "rmmod cfg80211" && rmmod cfg80211
+        echo "rmmod sha256_generic" && rmmod sha256_generic
+        echo "rmmod snd_soc_core" && rmmod snd_soc_core
+        echo "rmmod drm_kms_helper" && rmmod drm_kms_helper
+        echo "rmmod brcmutil" && rmmod brcmutil
+        echo "rmmod drm_dma_helper" && rmmod drm_dma_helper
+        echo "rmmod cec" && rmmod cec
+        echo "rmmod drm_display_handler" && rmmod drm_display_handler
+        echo "rmmod snd_soc_hdmi_codec" && rmmod snd_soc_hdmi_codec
+        echo "rmmod brcmfmac" && rmmod brcmfmac
+        echo "rmmod vc4" && rmmod vc4
+        echo "rmmod joydev" && rmmod joydev
+        echo "rmmod llc" && rmmod llc
+        echo "rmmod stp" && rmmod stp
+        echo "rmmod garp" && rmmod garp
+        echo "rmmod 8021q" && rmmod 8021q
+        echo "rmmod imx219" && rmmod imx219
+        echo "rmmod ecc" && rmmod ecc
+        echo "rmmod ecdh_generic" && rmmod ecdh_generic
+        echo "rmmod bluetooth" && rmmod bluetooth
+        echo "rmmod btbcm" && rmmod btbcm
+        echo "rmmod hci_uart" && rmmod hci_uart
+        echo "rmmod bnep" && rmmod bnep
+        echo "rmmod af_alg" && rmmod af_alg
+        echo "rmmod algif_skcipher" && rmmod algif_skcipher
+        echo "rmmod cryptd" && rmmod cryptd
+        echo "rmmod crypto_simd" && rmmod crypto_simd
+        echo "rmmod aes_arm_bs" && rmmod aes_arm_bs
+        echo "rmmod algif_hash" && rmmod algif_hash
+        echo "rmmod cmac" && rmmod cmac
+        echo "rmmod rfcomm" && rmmod rfcomm
         ;;
     *)
         echo "Usage: $0 {start|stop}"
