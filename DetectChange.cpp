@@ -9,7 +9,7 @@
 void captureImage(const char* filename) {
     std::string command = "libcamera-jpeg -n -o " + std::string(filename) + " --width 1640 --height 1232";
     system(command.c_str());
-    std::string command = "gst-launch-1.0 tcpserversrc host=192.168.0.116 port=9000 ! filesink location=" + std::string(fileName);
+    std::string command = "gst-launch-1.0 tcpserversrc host=192.168.0.116 port=9000 ! filesink location=" + std::string(filename);
     system(command.c_str());
 }
 
