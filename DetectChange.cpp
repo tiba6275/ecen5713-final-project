@@ -7,7 +7,7 @@
 #include <gst/gst.h>
 
 void captureImage(const char* filename) {
-    std::string command = "libcamera-jpeg -n -o " + std::string(filename) + "--width 1640 --height 1232";
+    std::string command = "libcamera-jpeg -n -o " + std::string(filename) + " --width 1640 --height 1232";
     system(command.c_str());
 }
 
