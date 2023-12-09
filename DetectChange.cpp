@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
         std::thread comparisonThread(compareImages, inFile1, inFile2, outFile);
         comparisonThread.join();
 
-        std::string pipelineStr = "filesrc location=" + outFile + " ! jpegenc ! tcpclientsink host=" + serverIp + " port=" + port;
+        std::string pipelineStr = "filesrc location=" + outFile + " ! tcpclientsink host=" + serverIp + " port=" + port;
         GstElement *pipeline = gst_parse_launch(pipelineStr.c_str(), NULL);
         gst_element_set_state(pipeline, GST_STATE_PLAYING);
 
