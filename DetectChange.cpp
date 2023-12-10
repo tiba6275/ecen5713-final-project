@@ -25,15 +25,27 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
-    cv::Mat diffImage;
-    cv::absdiff(image1, image2, diffImage);
+    Mat diffImage;
+    absdiff(image1, image2, diffImage);
 
-    cv::Mat mask, thresholdedImage;
-    cv::threshold(diffImage, mask, 50, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
-    cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
-    cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
+    // Get the mask if difference greater than th
+    int th = 10;  // 0
+    Mat mask(image1.size(), CV_8UC1);
+    for(int j=0; j<diffImage.rows; ++j) {
+        for(int i=0; i<diffImage.cols; ++i){
+            cv::Vec3b pix = diffImage.at<cv::Vec3b>(j,i);
+            int val = (pix[0] + pix[1] + pix[2]);
+            if(val>th){
+                mask.at<unsigned char>(j,i) = 255;
+            }
+        }
+    }
 
-    cv::imwrite(out, thresholdedImage);
+    // get the foreground
+    Mat res;
+    bitwise_and(image1, image2, res, mask);
+
+    cv::imwrite(out, res);
 }
 
 int main(int argc, char *argv[]) {
