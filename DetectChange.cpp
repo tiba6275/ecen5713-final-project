@@ -25,27 +25,25 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
+    cv::Mat gray1, gray2, contrastEnhancedDiff;
+    cv::cvtColor(image1, gray1, cv::COLOR_BGR2GRAY);
+    cv::cvtColor(image2, gray2, cv::COLOR_BGR2GRAY);
     cv::Mat diffImage;
-    absdiff(image1, image2, diffImage);
+    cv::absdiff(gray1, gray2, diffImage);
 
-    // Get the mask if difference greater than th
-    int th = 10;  // 0
-    cv::Mat mask(image1.size(), CV_8UC1);
-    for(int j=0; j<diffImage.rows; ++j) {
-        for(int i=0; i<diffImage.cols; ++i){
-            cv::Vec3b pix = diffImage.at<cv::Vec3b>(j,i);
-            int val = (pix[0] + pix[1] + pix[2]);
-            if(val>th){
-                mask.at<unsigned char>(j,i) = 255;
-            }
-        }
-    }
+    cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
+    clahe->setClipLimit(2.0);
+    clahe->apply(diffImage, contrastEnhancedDiff);
+    
+    cv::Mat mask, thresholdedImage;
+    cv::threshold(contrastEnhancedDiff, mask, 50, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
+    cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
+    cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
 
-    // get the foreground
-    cv::Mat res;
-    bitwise_and(image1, image2, res, mask);
+    cv::Mat colorDiff = cv::Mat::zeros(image2.size(), image2.type());
+    image2.copyTo(colorDiff, thresholdedImage);
 
-    cv::imwrite(out, res);
+    cv::imwrite(out, colorDiff);
 }
 
 int main(int argc, char *argv[]) {
