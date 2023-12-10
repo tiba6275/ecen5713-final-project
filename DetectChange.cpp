@@ -25,7 +25,7 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
-    cv::Mat diffImage;
+    cv::Mat diffImage, grayDiffImage;
     cv::absdiff(image1, image2, diffImage);
     cv::cvtColor(diffImage, grayDiffImage, cv::COLOR_BGR2GRAY);
     
