@@ -25,12 +25,15 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
-    cv::Mat diffImage, grayDiffImage;
+    cv::Mat diffImage, hsvImage;
     cv::absdiff(image1, image2, diffImage);
-    cv::cvtColor(diffImage, grayDiffImage, cv::COLOR_BGR2GRAY);
+    cv::cvtColor(diffImage, hsvImage, cv::COLOR_BGR2HSV);
     
-    cv::Mat mask, thresholdedImage;
-    cv::threshold(grayDiffImage, mask, 20, 255, cv::THRESH_BINARY);
+    std::vector<cv::Mat> hsvChannels(3);
+    cv::split(hsvImage, hsvChannels);
+    cv::Mat mask;
+    cv::threshold(hsvChannels[2], mask, 20, 255, cv::THRESH_BINARY);
+
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
     cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
 
