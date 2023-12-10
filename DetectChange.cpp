@@ -25,12 +25,10 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
-    cv::Mat gray1, gray2, contrastEnhancedDiff;
-    cv::cvtColor(image1, gray1, cv::COLOR_BGR2GRAY);
-    cv::cvtColor(image2, gray2, cv::COLOR_BGR2GRAY);
     cv::Mat diffImage;
-    cv::absdiff(gray1, gray2, diffImage);
+    cv::absdiff(image1, image2, diffImage);
 
+    cv::Mat contrastEnhancedDiff;
     cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
     clahe->setClipLimit(2.0);
     clahe->apply(diffImage, contrastEnhancedDiff);
