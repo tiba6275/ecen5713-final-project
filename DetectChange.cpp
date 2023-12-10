@@ -36,7 +36,7 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
             cv::Vec3b pix = diffImage.at<cv::Vec3b>(j,i);
             int val = (pix[0] + pix[1] + pix[2]);
             if(val>th){
-                mask.at<std::unsigned char>(j,i) = 255;
+                mask.at<unsigned char>(j,i) = 255;
             }
         }
     }
