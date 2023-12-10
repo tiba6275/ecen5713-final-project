@@ -33,7 +33,7 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
     cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
 
-    cv::imwrite(out, colorDiff);
+    cv::imwrite(out, thresholdedImage);
 }
 
 int main(int argc, char *argv[]) {
