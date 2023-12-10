@@ -25,20 +25,25 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
-    cv::Mat diffImage, hsvImage;
+    cv::Mat diffImage;
     cv::absdiff(image1, image2, diffImage);
-    cv::cvtColor(diffImage, hsvImage, cv::COLOR_BGR2HSV);
-    
-    std::vector<cv::Mat> hsvChannels(3);
-    cv::split(hsvImage, hsvChannels);
-    cv::Mat mask, thresholdedImage;
-    cv::threshold(hsvChannels[2], mask, 50, 255, cv::THRESH_BINARY);
-    
+
+    std::vector<cv::Mat> channels(3);
+    cv::split(diffImage, channels);
+
+    cv::Mat mask1, mask2, mask3;
+    cv::threshold(channels[0], mask1, 20, 255, cv::THRESH_BINARY);
+    cv::threshold(channels[1], mask2, 20, 255, cv::THRESH_BINARY);
+    cv::threshold(channels[2], mask3, 20, 255, cv::THRESH_BINARY);
+    cv::Mat finalMask;
+    cv::bitwise_or(mask1, mask2, finalMask);
+    cv::bitwise_or(finalMask, mask3, finalMask);
+
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
-    cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
-    
-    cv::Mat colorDiff = cv::Mat::zeros(image2.size(), image2.type());
-    image2.copyTo(colorDiff, thresholdedImage);
+    cv::morphologyEx(finalMask, finalMask, cv::MORPH_CLOSE, kernel);
+
+    cv::Mat colorDiff;
+    image2.copyTo(colorDiff, finalMask);
 
     cv::imwrite(out, colorDiff);
 }
