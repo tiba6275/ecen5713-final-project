@@ -25,9 +25,18 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
+    cv::Mat gray1, gray2;
+    cv::cvtColor(image1, gray1, cv::COLOR_BGR2GRAY);
+    cv::cvtColor(image2, gray2, cv::COLOR_BGR2GRAY);
     cv::Mat diffImage;
-    cv::absdiff(image1, image2, diffImage);
-    cv::imwrite(out, diffImage);
+    cv::absdiff(gray1, gray2, diffImage);
+
+    cv::Mat mask;
+    cv::threshold(diffImage, mask, 50, 255, cv::THRESH_BINARY);
+    cv::Mat colorDiff = cv::Mat::zeros(image1.size(), image1.type());
+    image1.copyTo(colorDiff, mask);
+
+    cv::imwrite(out, colorDiff);
 }
 
 int main(int argc, char *argv[]) {
