@@ -33,8 +33,8 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
 
     cv::Mat mask;
     cv::threshold(diffImage, mask, 50, 255, cv::THRESH_BINARY);
-    cv::Mat colorDiff = cv::Mat::zeros(image1.size(), image1.type());
-    image1.copyTo(colorDiff, mask);
+    cv::Mat colorDiff = cv::Mat::zeros(image2.size(), image2.type());
+    image2.copyTo(colorDiff, mask);
 
     cv::imwrite(out, colorDiff);
 }
