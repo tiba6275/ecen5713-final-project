@@ -25,18 +25,14 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
-    cv::Mat gray1, gray2, contrastEnhancedDiff;
-    cv::cvtColor(image1, gray1, cv::COLOR_BGR2GRAY);
-    cv::cvtColor(image2, gray2, cv::COLOR_BGR2GRAY);
-    cv::Mat diffImage;
-    cv::absdiff(gray1, gray2, diffImage);
+    cv::absdiff(image1, image2, diffImage);
 
     //Contrast Limited Adaptive Histogram Equalization
     cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
     clahe->setClipLimit(2.0);
     clahe->apply(diffImage, contrastEnhancedDiff);
     cv::Mat mask, thresholdedImage;
-    cv::threshold(contrastEnhancedDiff, mask, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
+    cv::threshold(contrastEnhancedDiff, mask, 50, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
     cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
 
