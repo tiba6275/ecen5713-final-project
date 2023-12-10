@@ -32,7 +32,7 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
     std::vector<cv::Mat> hsvChannels(3);
     cv::split(hsvImage, hsvChannels);
     cv::Mat mask, thresholdedImage;
-    cv::threshold(hsvChannels[2], mask, 20, 255, cv::THRESH_BINARY);
+    cv::threshold(hsvChannels[2], mask, 50, 255, cv::THRESH_BINARY);
     
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
     cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
