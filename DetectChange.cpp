@@ -25,24 +25,24 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
         return;
     }
 
-    Mat diffImage;
+    cv::Mat diffImage;
     absdiff(image1, image2, diffImage);
 
     // Get the mask if difference greater than th
     int th = 10;  // 0
-    Mat mask(image1.size(), CV_8UC1);
+    cv::Mat mask(image1.size(), CV_8UC1);
     for(int j=0; j<diffImage.rows; ++j) {
         for(int i=0; i<diffImage.cols; ++i){
             cv::Vec3b pix = diffImage.at<cv::Vec3b>(j,i);
             int val = (pix[0] + pix[1] + pix[2]);
             if(val>th){
-                mask.at<unsigned char>(j,i) = 255;
+                mask.at<std::unsigned char>(j,i) = 255;
             }
         }
     }
 
     // get the foreground
-    Mat res;
+    cv::Mat res;
     bitwise_and(image1, image2, res, mask);
 
     cv::imwrite(out, res);
