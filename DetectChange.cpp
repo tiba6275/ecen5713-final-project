@@ -27,14 +27,9 @@ void compareImages(const char* in1, const char* in2, const std::string& out) {
 
     cv::Mat diffImage;
     cv::absdiff(image1, image2, diffImage);
-
-    cv::Mat contrastEnhancedDiff;
-    cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
-    clahe->setClipLimit(2.0);
-    clahe->apply(diffImage, contrastEnhancedDiff);
     
     cv::Mat mask, thresholdedImage;
-    cv::threshold(contrastEnhancedDiff, mask, 50, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
+    cv::threshold(diffImage, mask, 50, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(3, 3));
     cv::morphologyEx(mask, thresholdedImage, cv::MORPH_CLOSE, kernel);
 
