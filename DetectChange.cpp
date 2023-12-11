@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
 
         outIdx++;
 
-        std::swap(inFile1, inFile2);
+        //std::swap(inFile1, inFile2);
     }
 
     return 0;
